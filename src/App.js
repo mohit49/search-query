@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{createContext, useState }  from 'react';
+import {  MainWrapper, } from './commonstyles';
 
+import Header from './includes/Header/Header';
+import FlightSearch from './components/FlightSearch/FlightSearch';
+import FlightResult from './components/FlightResult/FlightResult';
+if (process.env.NODE_ENV === 'development') {
+  const { flightApiLocation } = require('./mocks/flightApi')
+  flightApiLocation.start()
+}
+export const contextData = createContext();
 function App() {
+  const [flightType, setFlightType] = useState('one-way');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <contextData.Provider value={{ setFlightType, flightType }}>
+<Header/>
+{console.log(flightType)}
+<MainWrapper>
+  <FlightSearch/>
+  <FlightResult/>
+</MainWrapper>
+
+</contextData.Provider>
   );
 }
 
