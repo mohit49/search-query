@@ -1,71 +1,42 @@
 import React from 'react'
 import * as Comp from "../components/FlightResult/FlightResultStyle";
-function FlightBox() {
+function FlightBox({data}) {
+    console.log(data)
   return (
     <>
+    {data &&  
     <Comp.FlightItems>
         <Comp.FlightName>
-            <h5>Air Asia</h5>
-           
+            <h5>Lufthansa Airlines</h5>
+           <p>{data.offerType}</p>
         </Comp.FlightName>
         <Comp.FlightDepDetails>
             <span>
-                <b>13:30</b>
-                <p>Delhi</p>
+                <b>{data.startTime}</b>
+                <p>{data.originFullName}</p>
             </span>
             <span>
-                <b>13:30</b>
-                <p>Bengluru</p>
+            <b>{data.endTime}</b>
+                <p>{data.destinationFullName}</p>
             </span>
             <span>
-                <b className='price'>$3000</b>
+                <b className='price'>{data.currency} {data.amount}</b>
                 <p>Per traveller</p>
             </span>
         </Comp.FlightDepDetails>
+        <Comp.Duration>
+            <span>
+                <p>Departure Date</p>
+                <b>{data.depDate}</b>
+            </span>
+            <span>
+                <p>Return Date</p>
+                <b>{data.returnDate}</b>
+            </span>
+        </Comp.Duration>
         <Comp.BookNowButton>Book Now</Comp.BookNowButton>
     </Comp.FlightItems>
-    <Comp.FlightItems>
-        <Comp.FlightName>
-            <h5>Air Asia</h5>
-           
-        </Comp.FlightName>
-        <Comp.FlightDepDetails>
-            <span>
-                <b>13:30</b>
-                <p>Delhi</p>
-            </span>
-            <span>
-                <b>13:30</b>
-                <p>Bengluru</p>
-            </span>
-            <span>
-                <b className='price'>$3000</b>
-                <p>Per traveller</p>
-            </span>
-        </Comp.FlightDepDetails>
-        <Comp.BookNowButton>Book Now</Comp.BookNowButton>
-    </Comp.FlightItems>
-    <Comp.FlightItems>
-        <Comp.FlightName>
-            <h5>Air Asia</h5>
-           
-        </Comp.FlightName>
-        <Comp.FlightDepDetails>
-            <span>
-                <b>13:30</b>
-                <p>Delhi</p>
-            </span>
-            <span>
-                <b>13:30</b>
-                <p>Bengluru</p>
-            </span>
-            <span>
-                <b className='price'>$3000</b>
-                <p>Per traveller</p>
-            </span>
-        </Comp.FlightDepDetails>
-        <Comp.BookNowButton>Book Now</Comp.BookNowButton>
-    </Comp.FlightItems>
+}
 
     </>
     

@@ -59,6 +59,7 @@ export const LocationContainer = styled.div`
     width: 80%;
     display: flex;
     flex-direction: column;
+    position:relative;
     span {
       font-weight: bold;
       color: #6b6b6b;
@@ -128,8 +129,39 @@ background:rgb(99, 90, 217);
 color:#ffffff;
 font-size:16px;
 font-weight:bold;
+cursor:pointer;
 &:hover {
     background:#5046d3;
 }
  
+`
+
+export const SearchResultContainer = styled.div`
+display:flex;
+width:100%;
+position:absolute;
+top:100%;
+margin-top:10px;
+
+background:#ffffff;
+z-index:2;
+box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+`
+export const SearchListContainer = styled.ul`
+diaply:flex;
+padding:0;
+list-style:none;
+width:100%;
+min-height:100px;
+max-height:200px;
+overflow:auto;
+margin:0;
+`
+export const SearchListItem =styled.li`
+padding:10px;
+cursor:pointer;
+&:hover{
+  background:#5046d3;
+  color:#ffffff;
+}
 `

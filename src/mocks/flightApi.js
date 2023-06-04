@@ -2,366 +2,250 @@
 import { setupWorker, rest } from "msw";
 
 // This configures a Service Worker with the given request handlers.
+const airportsResult = {
+  area: "Germany area airports",
+  items: [
+    {
+      airport: "Berlin",
+      code: "ber",
+      country: "Germany",
+    },
+  ],
+};
+
+const flightResult = {
+  items: [
+    {
+      origin: "FRA",
+      originFullName: "Germany",
+      startTime: "1:30 AM",
+      endTime: "5:30 AM",
+      originAriPortName: "Frankfurt Airport (Rhein-Main-Flughafen)",
+      destination: "FCO",
+      destinationFullName: "Italy",
+      destinationAirPortName: "Rome - Fuimicino",
+      seatAvailiblity: "10",
+      amount: "128.26",
+      currency: "EUR",
+      offerType: "best-price",
+      depDate: "2023-06-13",
+      returnDate: "2023-06-28",
+    },
+    {
+      origin: "FRA",
+      originFullName: "Germany",
+      originAriPortName: "Frankfurt Airport (Rhein-Main-Flughafen)",
+      destination: "FCO",
+      destinationFullName: "Italy",
+      destinationAirPortName: "Rome - Fuimicino",
+      seatAvailiblity: "8",
+      amount: "128.26",
+      currency: "EUR",
+      offerType: "all",
+      depDate: "2023-06-13",
+      returnDate: "2023-06-20",
+      startTime: "6:30 AM",
+      endTime: "10:30 AM",
+    },
+    {
+      origin: "FRA",
+      originFullName: "Germany",
+      originAriPortName: "Frankfurt Airport (Rhein-Main-Flughafen)",
+      destination: "FCO",
+      destinationFullName: "Italy",
+      destinationAirPortName: "Rome - Fuimicino",
+      seatAvailiblity: "7",
+      amount: "110.26",
+      currency: "EUR",
+      offerType: "best-price",
+      depDate: "2023-06-13",
+      returnDate: "2023-06-26",
+      startTime: "12:30 PM",
+      endTime: "8:30 PM",
+    },
+    {
+      origin: "FRA",
+      originFullName: "Germany",
+      originAriPortName: "Frankfurt Airport (Rhein-Main-Flughafen)",
+      destination: "FCO",
+      destinationFullName: "Italy",
+      destinationAirPortName: "Rome - Fuimicino",
+      seatAvailiblity: "5",
+      amount: "130.26",
+      currency: "EUR",
+      offerType: "all",
+      depDate: "2023-06-13",
+      returnDate: "2023-06-20",
+      startTime: "1:30 AM",
+      endTime: "5:30 AM",
+    },
+    {
+      origin: "FRA",
+      originFullName: "Germany",
+      originAriPortName: "Frankfurt Airport (Rhein-Main-Flughafen)",
+      destination: "FCO",
+      destinationFullName: "Italy",
+      destinationAirPortName: "Rome - Fuimicino",
+      seatAvailiblity: "8",
+      amount: "100.26",
+      currency: "EUR",
+      offerType: "best-price",
+      depDate: "2023-06-13",
+      returnDate: "2023-06-30",
+      startTime: "12:30 PM",
+      endTime: "8:30 PM",
+    },
+    {
+      origin: "FRA",
+      originFullName: "Germany",
+      originAriPortName: "Frankfurt Airport (Rhein-Main-Flughafen)",
+      destination: "FCO",
+      destinationFullName: "Italy",
+      destinationAirPortName: "Rome - Fuimicino",
+      seatAvailiblity: "3",
+      amount: "100.26",
+      currency: "EUR",
+      offerType: "all",
+      depDate: "2023-06-13",
+      returnDate: "2023-06-20",
+      startTime: "1:30 AM",
+      endTime: "5:30 AM",
+    },
+
+    {
+      origin: "BER",
+      originFullName: "Germany",
+      originAriPortName: "Berlin",
+      destination: "BRN",
+      destinationFullName: "	Switzerland",
+      destinationAirPortName: "Berne, Bern-Belp",
+      seatAvailiblity: "10",
+      amount: "100.26",
+      currency: "EUR",
+      offerType: "all",
+      depDate: "2023-06-13",
+      returnDate: "2023-06-20",
+      startTime: "6:30 AM",
+      endTime: "10:30 AM",
+    },
+    {
+      origin: "BER",
+      originFullName: "Germany",
+      originAriPortName: "Berlin",
+      destination: "BRN",
+      destinationFullName: "Switzerland",
+      destinationAirPortName: "Berne, Bern-Belp",
+      seatAvailiblity: "10",
+      amount: "100.26",
+      currency: "EUR",
+      offerType: "best-price",
+      depDate: "2023-06-15",
+      returnDate: "2023-06-25",
+      startTime: "1:30 AM",
+      endTime: "3:30 AM",
+    },
+    {
+      origin: "BER",
+      originFullName: "Germany",
+      originAriPortName: "Berlin",
+      destination: "BRN",
+      destinationFullName: "	Switzerland",
+      destinationAirPortName: "Berne, Bern-Belp",
+      seatAvailiblity: "5",
+      amount: "100.26",
+      currency: "EUR",
+      offerType: "all",
+      depDate: "2023-06-15",
+      returnDate: "2023-06-20",
+      startTime: "12:30 PM",
+      endTime: "8:30 PM",
+    },
+    {
+      origin: "BER",
+      originFullName: "Germany",
+      originAriPortName: "Berlin",
+      destination: "BRN",
+      destinationFullName: "	Switzerland",
+      destinationAirPortName: "Berne, Bern-Belp",
+      seatAvailiblity: "4",
+      amount: "100.26",
+      currency: "EUR",
+      offerType: "all",
+      depDate: "2023-06-15",
+      returnDate: "2023-06-20",
+      startTime: "1:30 AM",
+      endTime: "5:30 AM",
+    },
+    {
+      origin: "BER",
+      originFullName: "Germany",
+      originAriPortName: "Berlin",
+      destination: "BRN",
+      destinationFullName: "	Switzerland",
+      destinationAirPortName: "Berne, Bern-Belp",
+      seatAvailiblity: "7",
+      amount: "100.26",
+      currency: "EUR",
+      offerType: "all",
+      depDate: "2023-06-15",
+      returnDate: "2023-06-20",
+      startTime: "5:30 AM",
+      endTime: "8:30 AM",
+    },
+    {
+      origin: "BER",
+      originFullName: "Germany",
+      originAriPortName: "Berlin",
+      destination: "BRN",
+      destinationFullName: "	Switzerland",
+      destinationAirPortName: "Berne, Bern-Belp",
+      seatAvailiblity: "3",
+      amount: "100.26",
+      currency: "EUR",
+      offerType: "best-price",
+      depDate: "2023-06-15",
+      returnDate: "2023-06-28",
+      startTime:'10:30 PM',
+      endTime:'12:00 AM',
+    },
+  ],
+};
 
 export const flightApiLocation = setupWorker(
-  rest.post("/flightApi", (req, res, ctx) => {
-    
+  rest.get("/flightApiSearch", (req, res, ctx) => {
+    const airportKeyWord = req.url.search.split("=")[1];
+    let resultArray = airportsResult.items.filter((ele, index) =>
+      ele.airport.toLowerCase().includes(airportKeyWord)
+    );
+
     return res(
       ctx.status(200),
       ctx.json({
         identifier: "result",
-        items: [
-          {
-            airport: "Gerona",
-            code: "gro",
-            country: "Spain",
-          },
-          {
-            area: "Gerona area airports",
-            items: [
-              {
-                airport: "Barcelona",
-                code: "bcn",
-                country: "Spain",
-              },
-            ],
-          },
-          {
-            area: "Germany area airports",
-            items: [
-              {
-                airport: "Berlin, all airports",
-                code: "ber",
-                country: "Germany",
-              },
-              {
-                airport: "Berlin - Brandenburg",
-                code: "ber",
-                country: "Germany",
-              },
-              {
-                airport: "Berlin main station",
-                code: "qpp",
-                country: "Germany",
-              },
-              {
-                airport: "Bremen, all airports",
-                code: "bre",
-                country: "Germany",
-              },
-              {
-                airport: "Bremen",
-                code: "bre",
-                country: "Germany",
-              },
-              {
-                airport: "Bremen main station",
-                code: "dhc",
-                country: "Germany",
-              },
-              {
-                airport: "Cologne, all airports",
-                code: "cgn",
-                country: "Germany",
-              },
-              {
-                airport: "Cologne - Cologne/Bonn Airport",
-                code: "cgn",
-                country: "Germany",
-              },
-              {
-                airport: "Cologne main station",
-                code: "qkl",
-                country: "Germany",
-              },
-              {
-                airport: "Cologne, Messe Deutz Railway Station",
-                code: "qku",
-                country: "Germany",
-              },
-              {
-                airport: "Dortmund, all airports",
-                code: "dtm",
-                country: "Germany",
-              },
-              {
-                airport: "Dortmund",
-                code: "dtm",
-                country: "Germany",
-              },
-              {
-                airport: "Dortmund main station",
-                code: "dtz",
-                country: "Germany",
-              },
-              {
-                airport: "Dresden, all airports",
-                code: "drs",
-                country: "Germany",
-              },
-              {
-                airport: "Dresden",
-                code: "drs",
-                country: "Germany",
-              },
-              {
-                airport: "Dresden main station",
-                code: "xir",
-                country: "Germany",
-              },
-              {
-                airport: "Dusseldorf, all airports",
-                code: "dus",
-                country: "Germany",
-              },
-              {
-                airport: "Dusseldorf - North Rhine Westphalia",
-                code: "dus",
-                country: "Germany",
-              },
-              {
-                airport: "Dusseldorf - Train Station",
-                code: "qdu",
-                country: "Germany",
-              },
-              {
-                airport: "Erfurt, all airports",
-                code: "erf",
-                country: "Germany",
-              },
-              {
-                airport: "Erfurt",
-                code: "erf",
-                country: "Germany",
-              },
-              {
-                airport: "Erfurt - Railway Station",
-                code: "xiu",
-                country: "Germany",
-              },
-              {
-                airport: "Frankfurt, all airports",
-                code: "fra",
-                country: "Germany",
-              },
-              {
-                airport: "Frankfurt (Main) main station",
-                code: "zrb",
-                country: "Germany",
-              },
-              {
-                airport: "Frankfurt/Main International",
-                code: "fra",
-                country: "Germany",
-              },
-              {
-                airport: "Hamburg, all airports",
-                code: "ham",
-                country: "Germany",
-              },
-              {
-                airport: "Hamburg",
-                code: "ham",
-                country: "Germany",
-              },
-              {
-                airport: "Hamburg main station",
-                code: "zmb",
-                country: "Germany",
-              },
-              {
-                airport: "Hannover, all airports",
-                code: "haj",
-                country: "Germany",
-              },
-              {
-                airport: "Hannover",
-                code: "haj",
-                country: "Germany",
-              },
-              {
-                airport: "Hannover main station",
-                code: "zvr",
-                country: "Germany",
-              },
-              {
-                airport: "Karlsruhe, all airports",
-                code: "fkb",
-                country: "Germany",
-              },
-              {
-                airport: "Karlsruhe - Hbf Railway Station",
-                code: "kjr",
-                country: "Germany",
-              },
-              {
-                airport: "Karlsruhe / Baden Baden",
-                code: "fkb",
-                country: "Germany",
-              },
-              {
-                airport: "Leipzig/ Halle, all airports",
-                code: "lej",
-                country: "Germany",
-              },
-              {
-                airport: "Leipzig main station",
-                code: "xit",
-                country: "Germany",
-              },
-              {
-                airport: "Leipzig/Halle",
-                code: "lej",
-                country: "Germany",
-              },
-              {
-                airport: "Muenster-Osnabrueck, all airports",
-                code: "fmo",
-                country: "Germany",
-              },
-              {
-                airport: "Muenster (Westphalia) main station",
-                code: "mkf",
-                country: "Germany",
-              },
-              {
-                airport: "Muenster-Osnabrueck",
-                code: "fmo",
-                country: "Germany",
-              },
-              {
-                airport: "Osnabrueck main station",
-                code: "zpe",
-                country: "Germany",
-              },
-              {
-                airport: "Munich, all airports",
-                code: "muc",
-                country: "Germany",
-              },
-              {
-                airport: "Munich",
-                code: "muc",
-                country: "Germany",
-              },
-              {
-                airport: "Munich main station",
-                code: "zmu",
-                country: "Germany",
-              },
-              {
-                airport: "Nuremberg, all airports",
-                code: "nue",
-                country: "Germany",
-              },
-              {
-                airport: "Nuremberg",
-                code: "nue",
-                country: "Germany",
-              },
-              {
-                airport: "Nuremberg Railway Station",
-                code: "zaq",
-                country: "Germany",
-              },
-              {
-                airport: "Saarbrucken, all airports",
-                code: "scn",
-                country: "Germany",
-              },
-              {
-                airport: "Saarbruecken - Ensheim",
-                code: "scn",
-                country: "Germany",
-              },
-              {
-                airport: "Saarbruecken main station",
-                code: "qfz",
-                country: "Germany",
-              },
-              {
-                airport: "Stuttgart, all airports",
-                code: "str",
-                country: "Germany",
-              },
-              {
-                airport: "Stuttgart - Echterdingen",
-                code: "str",
-                country: "Germany",
-              },
-              {
-                airport: "Stuttgart main station",
-                code: "zws",
-                country: "Germany",
-              },
-              {
-                airport: "Aachen/Maastricht",
-                code: "xhj",
-                country: "Germany",
-              },
-              {
-                airport: "Freiburg",
-                code: "qfb",
-                country: "Germany",
-              },
-              {
-                airport: "Friedrichshafen",
-                code: "fdh",
-                country: "Germany",
-              },
-              {
-                airport: "Goettingen",
-                code: "zeu",
-                country: "Germany",
-              },
-              {
-                airport: "Heringsdorf",
-                code: "hdf",
-                country: "Germany",
-              },
-              {
-                airport: "Kassel",
-                code: "kwq",
-                country: "Germany",
-              },
-              {
-                airport: "Langeoog",
-                code: "lgo",
-                country: "Germany",
-              },
-              {
-                airport: "Mannheim - Hbf Railway Station",
-                code: "mhj",
-                country: "Germany",
-              },
-              {
-                airport: "Paderborn",
-                code: "pad",
-                country: "Germany",
-              },
-              {
-                airport: "Rostock",
-                code: "rlg",
-                country: "Germany",
-              },
-              {
-                airport: "Ulm",
-                code: "qul",
-                country: "Germany",
-              },
-              {
-                airport: "Westerland",
-                code: "gwt",
-                country: "Germany",
-              },
-              {
-                airport: "Wuerzburg",
-                code: "qwu",
-                country: "Germany",
-              },
-            ],
-          },
-        ],
+        items: resultArray,
+      })
+    );
+  }),
+  rest.get("/promotions/priceoffers/flights/ond/", (req, res, ctx) => {
+    let filterdKey = {},
+      filteredUrl = req.url.search.replace("?", "").split("&");
+    filteredUrl.forEach((ele, index) => {
+      filterdKey[ele.split("=")[0]] = ele.split("=")[1];
+    });
+
+    let results = flightResult.items.filter(
+      (ele) =>
+        ele.origin.toLocaleLowerCase() ===
+          filterdKey.depLoc.toLocaleLowerCase() &&
+        ele.destination.toLocaleLowerCase() ===
+          filterdKey.arrLoc.toLocaleLowerCase()
+    );
+    console.log(results);
+    return res(
+      ctx.status(200),
+      ctx.json({
+        identifier: "result",
+        items: results,
       })
     );
   })

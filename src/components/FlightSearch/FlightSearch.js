@@ -2,31 +2,37 @@ import React, { useContext, useState } from "react";
 import * as Comp from "./FlightSearchStyle";
 import { contextData } from "../../App";
 import { DatePickerElement } from "../../Elements/Datepicker";
+
+import Dropdown from "../../Elements/SearchInputElement";
+
 function FlightSearch() {
-  const { setFlightType, flightType } = useContext(contextData);
-const [arrivalDate, setArrivalDate] = useState(new Date());
-const [depDate, setDepDate] = useState(new Date());
-console.log(arrivalDate)
-  const setRoundType = (event) => {
-    setFlightType(event.target.type);
-  };
+ 
+  const { setRoundType, roundType, setDepLocation, setArrLocation, setArrivalDate, setDepDate, arrivalDate , depDate } =
+    useContext(contextData);
+
+
+  console.log(roundType);
+
+const roundTypeHandler = (event) => {
+  setRoundType(event.target.type)
+}
   return (
     <Comp.FlightContainer>
       <Comp.FlightTripSelection>
         <Comp.FlightTripUl>
           <Comp.FlightTripList
-            onClick={setRoundType}
-            type="one-way"
-            className={flightType == "one-way" ? "active" : ""}
+            onClick={roundTypeHandler}
+            type="best-price"
+            className={roundType == "best-price" ? "active" : ""}
           >
-            One-Way
+           Best Price
           </Comp.FlightTripList>
           <Comp.FlightTripList
-            onClick={setRoundType}
-            type="round-trip"
-            className={flightType == "round-trip" ? "active" : ""}
+            onClick={roundTypeHandler}
+            type="all"
+            className={roundType == "all" ? "active" : ""}
           >
-            Round-Trip
+            All
           </Comp.FlightTripList>
         </Comp.FlightTripUl>
       </Comp.FlightTripSelection>
@@ -42,7 +48,7 @@ console.log(arrivalDate)
           </div>
           <div className="locationInput">
             <span>From</span>
-            <input type="text" placeholder="Enter location" />
+            <Dropdown setLocation={setArrLocation} />
           </div>
         </Comp.LocationContainer>
 
@@ -57,22 +63,51 @@ console.log(arrivalDate)
           </div>
           <div className="locationInput">
             <span>To</span>
-            <input type="text" placeholder="Enter location" />
+
+            <Dropdown setLocation={setDepLocation} />
           </div>
         </Comp.LocationContainer>
       </Comp.FlightInputcon>
       <Comp.DatePickContainer>
         <Comp.DatePickItem>
-          <span> <img width="35" height="35" src="https://img.icons8.com/pulsar-line/48/timeline-week.png" alt="timeline-week"/><p>Departure</p></span>
-          <Comp.Datepicker><DatePickerElement  minDate={new Date()} date={depDate} setDate={setDepDate}/></Comp.Datepicker>
+          <span>
+            <img
+              width="35"
+              height="35"
+              src="https://img.icons8.com/pulsar-line/48/timeline-week.png"
+              alt="timeline-week"
+            />
+            <p>Departure</p>
+          </span>
+          <Comp.Datepicker>
+            <DatePickerElement
+              minDate={new Date()}
+              date={depDate}
+              setDate={setDepDate}
+            />
+          </Comp.Datepicker>
         </Comp.DatePickItem>
         <Comp.DatePickItem>
-       <span><img width="35" height="35" src="https://img.icons8.com/pulsar-line/48/timeline-week.png" alt="timeline-week"/> <p>Arrival</p></span>
-       <Comp.Datepicker><DatePickerElement minDate={depDate} date={arrivalDate} setDate={setArrivalDate}/></Comp.Datepicker>
+          <span>
+            <img
+              width="35"
+              height="35"
+              src="https://img.icons8.com/pulsar-line/48/timeline-week.png"
+              alt="timeline-week"
+            />
+            <p>REturn Date</p>
+          </span>
+          <Comp.Datepicker>
+            <DatePickerElement
+              minDate={depDate}
+              date={arrivalDate}
+              setDate={setArrivalDate}
+            />
+          </Comp.Datepicker>
         </Comp.DatePickItem>
       </Comp.DatePickContainer>
       <Comp.SearchButtonCon>
-        <Comp.SearchButton >Submit</Comp.SearchButton>
+        <Comp.SearchButton>Submit</Comp.SearchButton>
       </Comp.SearchButtonCon>
     </Comp.FlightContainer>
   );

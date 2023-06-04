@@ -4,17 +4,18 @@ import {  MainWrapper, } from './commonstyles';
 import Header from './includes/Header/Header';
 import FlightSearch from './components/FlightSearch/FlightSearch';
 import FlightResult from './components/FlightResult/FlightResult';
-if (process.env.NODE_ENV === 'development') {
-  const { flightApiLocation } = require('./mocks/flightApi')
-  flightApiLocation.start()
-}
+
 export const contextData = createContext();
 function App() {
-  const [flightType, setFlightType] = useState('one-way');
+  const [roundType, setRoundType] = useState('all');
+  const [depLocation, setDepLocation] = useState();
+  const [arrLocation, setArrLocation] = useState();
+  const [arrivalDate, setArrivalDate] = useState(new Date());
+  const [depDate, setDepDate] = useState(new Date());
   return (
-    <contextData.Provider value={{ setFlightType, flightType }}>
+    <contextData.Provider value={{ setRoundType, roundType, setDepLocation ,arrLocation,depLocation,  setArrLocation}}>
 <Header/>
-{console.log(flightType)}
+
 <MainWrapper>
   <FlightSearch/>
   <FlightResult/>
