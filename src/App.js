@@ -12,8 +12,9 @@ function App() {
   const [arrLocation, setArrLocation] = useState();
   const [arrivalDate, setArrivalDate] = useState(new Date());
   const [depDate, setDepDate] = useState(new Date());
+  const [searchButtonAction, setSearchButtonAction] = useState(false);
   return (
-    <contextData.Provider value={{ setRoundType, roundType, setDepLocation ,arrLocation,depLocation,  setArrLocation}}>
+    <contextData.Provider value={{setDepDate, setArrivalDate, setSearchButtonAction, searchButtonAction, arrivalDate,   depDate,  setRoundType, roundType, setDepLocation ,arrLocation,depLocation,  setArrLocation}}>
 <Header/>
 
 <MainWrapper>

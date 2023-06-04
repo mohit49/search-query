@@ -133,6 +133,9 @@ cursor:pointer;
 &:hover {
     background:#5046d3;
 }
+&:disabled {
+  background: gray;
+}
  
 `
 

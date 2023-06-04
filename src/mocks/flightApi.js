@@ -10,6 +10,31 @@ const airportsResult = {
       code: "ber",
       country: "Germany",
     },
+    {
+      airport: "Frankfurt Airport (Rhein-Main-Flughafen)",
+      code: "FRA",
+      country: "Germany",
+    },
+    {
+      airport: "Berne, Bern-Belp",
+      code: "BRN",
+      country: "Switzerland",
+    },
+    {
+      airport: "Rome - Fuimicino",
+      code: "FCO",
+      country: "Italy",
+    },
+    {
+      airport: "Berne, Railway Service",
+      code: "ZDJ",
+      country: "Switzerland",
+    },
+    {
+      airport: "Berlin, Tegel",
+      code: "TXL",
+      country: "Germany",
+    },
   ],
 };
 
@@ -29,7 +54,39 @@ const flightResult = {
       currency: "EUR",
       offerType: "best-price",
       depDate: "2023-06-13",
-      returnDate: "2023-06-28",
+      returnDate: "2023-06-18",
+    },
+    {
+      origin: "FRA",
+      originFullName: "Germany",
+      startTime: "1:30 AM",
+      endTime: "5:30 AM",
+      originAriPortName: "Frankfurt Airport (Rhein-Main-Flughafen)",
+      destination: "FCO",
+      destinationFullName: "Italy",
+      destinationAirPortName: "Rome - Fuimicino",
+      seatAvailiblity: "10",
+      amount: "127.26",
+      currency: "EUR",
+      offerType: "all",
+      depDate: "2023-06-13",
+      returnDate: "2023-06-18",
+    },
+    {
+      origin: "FRA",
+      originFullName: "Germany",
+      startTime: "1:30 AM",
+      endTime: "5:30 AM",
+      originAriPortName: "Frankfurt Airport (Rhein-Main-Flughafen)",
+      destination: "FCO",
+      destinationFullName: "Italy",
+      destinationAirPortName: "Rome - Fuimicino",
+      seatAvailiblity: "10",
+      amount: "125.26",
+      currency: "EUR",
+      offerType: "best-price",
+      depDate: "2023-06-13",
+      returnDate: "2023-06-18",
     },
     {
       origin: "FRA",
@@ -42,8 +99,8 @@ const flightResult = {
       amount: "128.26",
       currency: "EUR",
       offerType: "all",
-      depDate: "2023-06-13",
-      returnDate: "2023-06-20",
+      depDate: "2023-06-15",
+      returnDate: "2023-06-19",
       startTime: "6:30 AM",
       endTime: "10:30 AM",
     },
@@ -58,8 +115,8 @@ const flightResult = {
       amount: "110.26",
       currency: "EUR",
       offerType: "best-price",
-      depDate: "2023-06-13",
-      returnDate: "2023-06-26",
+      depDate: "2023-06-18",
+      returnDate: "2023-06-21",
       startTime: "12:30 PM",
       endTime: "8:30 PM",
     },
@@ -74,8 +131,8 @@ const flightResult = {
       amount: "130.26",
       currency: "EUR",
       offerType: "all",
-      depDate: "2023-06-13",
-      returnDate: "2023-06-20",
+      depDate: "2023-06-20",
+      returnDate: "2023-06-23",
       startTime: "1:30 AM",
       endTime: "5:30 AM",
     },
@@ -90,8 +147,8 @@ const flightResult = {
       amount: "100.26",
       currency: "EUR",
       offerType: "best-price",
-      depDate: "2023-06-13",
-      returnDate: "2023-06-30",
+      depDate: "2023-06-22",
+      returnDate: "2023-06-25",
       startTime: "12:30 PM",
       endTime: "8:30 PM",
     },
@@ -106,8 +163,8 @@ const flightResult = {
       amount: "100.26",
       currency: "EUR",
       offerType: "all",
-      depDate: "2023-06-13",
-      returnDate: "2023-06-20",
+      depDate: "2023-06-24",
+      returnDate: "2023-06-26",
       startTime: "1:30 AM",
       endTime: "5:30 AM",
     },
@@ -117,14 +174,30 @@ const flightResult = {
       originFullName: "Germany",
       originAriPortName: "Berlin",
       destination: "BRN",
-      destinationFullName: "	Switzerland",
+      destinationFullName: "Switzerland",
       destinationAirPortName: "Berne, Bern-Belp",
       seatAvailiblity: "10",
       amount: "100.26",
       currency: "EUR",
       offerType: "all",
-      depDate: "2023-06-13",
-      returnDate: "2023-06-20",
+      depDate: "2023-06-16",
+      returnDate: "2023-06-19",
+      startTime: "6:30 AM",
+      endTime: "10:30 AM",
+    },
+    {
+      origin: "BER",
+      originFullName: "Germany",
+      originAriPortName: "Berlin",
+      destination: "BRN",
+      destinationFullName: "Switzerland",
+      destinationAirPortName: "Berne, Bern-Belp",
+      seatAvailiblity: "10",
+      amount: "00.26",
+      currency: "EUR",
+      offerType: "best-price",
+      depDate: "2023-06-14",
+      returnDate: "2023-06-16",
       startTime: "6:30 AM",
       endTime: "10:30 AM",
     },
@@ -140,9 +213,25 @@ const flightResult = {
       currency: "EUR",
       offerType: "best-price",
       depDate: "2023-06-15",
-      returnDate: "2023-06-25",
+      returnDate: "2023-06-18",
       startTime: "1:30 AM",
       endTime: "3:30 AM",
+    },
+    {
+      origin: "BER",
+      originFullName: "Germany",
+      originAriPortName: "Berlin",
+      destination: "BRN",
+      destinationFullName: "Switzerland",
+      destinationAirPortName: "Berne, Bern-Belp",
+      seatAvailiblity: "10",
+      amount: "00.26",
+      currency: "EUR",
+      offerType: "best-price",
+      depDate: "2023-06-14",
+      returnDate: "2023-06-22",
+      startTime: "6:30 AM",
+      endTime: "10:30 AM",
     },
     {
       origin: "BER",
@@ -155,8 +244,8 @@ const flightResult = {
       amount: "100.26",
       currency: "EUR",
       offerType: "all",
-      depDate: "2023-06-15",
-      returnDate: "2023-06-20",
+      depDate: "2023-06-20",
+      returnDate: "2023-06-23",
       startTime: "12:30 PM",
       endTime: "8:30 PM",
     },
@@ -171,8 +260,8 @@ const flightResult = {
       amount: "100.26",
       currency: "EUR",
       offerType: "all",
-      depDate: "2023-06-15",
-      returnDate: "2023-06-20",
+      depDate: "2023-06-20",
+      returnDate: "2023-06-23",
       startTime: "1:30 AM",
       endTime: "5:30 AM",
     },
@@ -188,7 +277,7 @@ const flightResult = {
       currency: "EUR",
       offerType: "all",
       depDate: "2023-06-15",
-      returnDate: "2023-06-20",
+      returnDate: "2023-06-19",
       startTime: "5:30 AM",
       endTime: "8:30 AM",
     },
@@ -203,10 +292,10 @@ const flightResult = {
       amount: "100.26",
       currency: "EUR",
       offerType: "best-price",
-      depDate: "2023-06-15",
-      returnDate: "2023-06-28",
-      startTime:'10:30 PM',
-      endTime:'12:00 AM',
+      depDate: "2023-06-16",
+      returnDate: "2023-06-20",
+      startTime: "10:30 PM",
+      endTime: "12:00 AM",
     },
   ],
 };
@@ -236,16 +325,25 @@ export const flightApiLocation = setupWorker(
     let results = flightResult.items.filter(
       (ele) =>
         ele.origin.toLocaleLowerCase() ===
-          filterdKey.depLoc.toLocaleLowerCase() &&
+          filterdKey.arrLoc.toLocaleLowerCase() &&
         ele.destination.toLocaleLowerCase() ===
-          filterdKey.arrLoc.toLocaleLowerCase()
+          filterdKey.depLoc.toLocaleLowerCase()
     );
-    console.log(results);
+
+  let dateFilter = results.filter((ele, item) =>   {
+    if(filterdKey?.type) {
+      return new Date(ele.depDate) >= new Date(filterdKey.depDate)  && ele.offerType === filterdKey.type;
+    }
+    else {
+    return new Date(ele.depDate) >= new Date(filterdKey.depDate)  && new Date(ele.returnDate) <= new  Date(filterdKey.returnDate);
+    }
+  });
+
     return res(
       ctx.status(200),
       ctx.json({
         identifier: "result",
-        items: results,
+        items: dateFilter,
       })
     );
   })

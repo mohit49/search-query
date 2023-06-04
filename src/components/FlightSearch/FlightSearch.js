@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import * as Comp from "./FlightSearchStyle";
 import { contextData } from "../../App";
 import { DatePickerElement } from "../../Elements/Datepicker";
@@ -6,16 +6,38 @@ import { DatePickerElement } from "../../Elements/Datepicker";
 import Dropdown from "../../Elements/SearchInputElement";
 
 function FlightSearch() {
- 
-  const { setRoundType, roundType, setDepLocation, setArrLocation, setArrivalDate, setDepDate, arrivalDate , depDate } =
-    useContext(contextData);
-
+  const [disabled, setDisabled] = useState(true);
+  const {
+    setRoundType,
+    roundType,
+    depLocation,
+    arrLocation,
+    setDepLocation,
+    setSearchButtonAction,
+    searchButtonAction,
+    setArrLocation,
+    setArrivalDate,
+    setDepDate,
+    arrivalDate,
+    depDate,
+  } = useContext(contextData);
 
   console.log(roundType);
 
-const roundTypeHandler = (event) => {
-  setRoundType(event.target.type)
-}
+  const roundTypeHandler = (event) => {
+    setRoundType(event.target.type);
+  };
+
+  const handleForm = () => {
+    setSearchButtonAction(!searchButtonAction);
+  };
+  useEffect(() => {
+    if (
+      (depDate, arrivalDate, arrLocation?.length > 0, depLocation?.length > 0)
+    ) {
+      setDisabled(false)
+    }
+  }, [depDate, arrivalDate, arrLocation, depLocation]);
   return (
     <Comp.FlightContainer>
       <Comp.FlightTripSelection>
@@ -25,7 +47,7 @@ const roundTypeHandler = (event) => {
             type="best-price"
             className={roundType == "best-price" ? "active" : ""}
           >
-           Best Price
+            Best Price
           </Comp.FlightTripList>
           <Comp.FlightTripList
             onClick={roundTypeHandler}
@@ -95,7 +117,7 @@ const roundTypeHandler = (event) => {
               src="https://img.icons8.com/pulsar-line/48/timeline-week.png"
               alt="timeline-week"
             />
-            <p>REturn Date</p>
+            <p>Return Date</p>
           </span>
           <Comp.Datepicker>
             <DatePickerElement
@@ -107,7 +129,9 @@ const roundTypeHandler = (event) => {
         </Comp.DatePickItem>
       </Comp.DatePickContainer>
       <Comp.SearchButtonCon>
-        <Comp.SearchButton>Submit</Comp.SearchButton>
+        <Comp.SearchButton disabled={disabled} onClick={handleForm}>
+          Submit
+        </Comp.SearchButton>
       </Comp.SearchButtonCon>
     </Comp.FlightContainer>
   );

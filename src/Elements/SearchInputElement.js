@@ -53,7 +53,7 @@ function Dropdown({ setLocation }) {
             {searchResult?.items.map((ele, index) => (
               <Comp.SearchListItem
                 key={index}
-                onClick={(e) => {setShowDropDown(false); setLocation(ele.airport); setInput(ele.airport)}}
+                onClick={(e) => {setShowDropDown(false); setLocation(ele.code); setInput(ele.airport)}}
               >
                 {ele.airport}
               </Comp.SearchListItem>

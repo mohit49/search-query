@@ -10,18 +10,23 @@ function FlightResult() {
     arrivalDate,
     depDate,
     depLocation,
-    arrLocation
+    arrLocation, searchButtonAction
   } = useContext(contextData);
   const service = new Service();
   useEffect(() => {
-    service
+    if(arrivalDate  && depDate && depLocation?.length > 0 && arrLocation?.length > 0 && roundType?.length > 0) {
+      const formatReturnDate = arrivalDate.toISOString().slice(0, 10);
+      const formatDepDate = depDate.toISOString().slice(0, 10);
+      service
       .get(
-        `promotions/priceoffers/flights/ond/?depLoc=${depLocation}&arrLoc=${arrLocation}&depDate=2023-06-13&returnDate=2023-06-20`
+        `promotions/priceoffers/flights/ond/?depLoc=${depLocation}&arrLoc=${arrLocation}&depDate=${formatDepDate}&returnDate=${formatReturnDate}${roundType === 'best-price' ? '&type=best-price':''}`
       )
       .then((res) => {
         setResult(res);
       });
-  }, [roundType,arrivalDate, depDate, depLocation, arrLocation ]);
+    }
+   
+  }, [roundType , searchButtonAction]);
   return (
     <>
       <Comp.FlightBocContainer>
