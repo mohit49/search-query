@@ -1,14 +1,14 @@
 import React from 'react'
 import * as Comp from "../components/FlightResult/FlightResultStyle";
 function FlightBox({data}) {
-    console.log(data)
+   
   return (
     <>
     {data &&  
     <Comp.FlightItems>
         <Comp.FlightName>
             <h5>Lufthansa Airlines</h5>
-           <p>{data.offerType}</p>
+          {data.offerType === 'best-price' && <p>{data.offerType}</p> } 
         </Comp.FlightName>
         <Comp.FlightDepDetails>
             <span>

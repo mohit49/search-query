@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as Comp from "./FlightSearchStyle";
-import { contextData } from "../../App";
+import { useContextData } from "../../contextProvider";
 import { DatePickerElement } from "../../Elements/Datepicker";
 
 import Dropdown from "../../Elements/SearchInputElement";
@@ -8,19 +8,12 @@ import Dropdown from "../../Elements/SearchInputElement";
 function FlightSearch() {
   const [disabled, setDisabled] = useState(true);
   const {
-    setRoundType,
     roundType,
-    depLocation,
-    arrLocation,
-    setDepLocation,
-    setSearchButtonAction,
-    searchButtonAction,
-    setArrLocation,
-    setArrivalDate,
-    setDepDate,
     arrivalDate,
     depDate,
-  } = useContext(contextData);
+    depLocation,
+    arrLocation, searchButtonAction,setRoundType,setSearchButtonAction,setArrLocation,setDepLocation,setDepDate,setArrivalDate
+  } = useContextData();
 
   console.log(roundType);
 
@@ -39,7 +32,7 @@ function FlightSearch() {
     }
   }, [depDate, arrivalDate, arrLocation, depLocation]);
   return (
-    <Comp.FlightContainer>
+    <Comp.FlightContainer data-testid='flightSearchTest'>
       <Comp.FlightTripSelection>
         <Comp.FlightTripUl>
           <Comp.FlightTripList

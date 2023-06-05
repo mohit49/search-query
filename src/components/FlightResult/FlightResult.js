@@ -1,8 +1,8 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import FlightBox from "../../Elements/FlightBox";
 import * as Comp from "./FlightResultStyle";
 import Service from "../../api";
-import { contextData } from "../../App";
+import { useContextData } from "../../contextProvider";
 function FlightResult() {
   const [result, setResult] = useState();
   const {
@@ -11,7 +11,7 @@ function FlightResult() {
     depDate,
     depLocation,
     arrLocation, searchButtonAction
-  } = useContext(contextData);
+  } = useContextData();
   const service = new Service();
   useEffect(() => {
     if(arrivalDate  && depDate && depLocation?.length > 0 && arrLocation?.length > 0 && roundType?.length > 0) {
@@ -29,7 +29,7 @@ function FlightResult() {
   }, [roundType , searchButtonAction]);
   return (
     <>
-      <Comp.FlightBocContainer>
+      <Comp.FlightBocContainer data-testid='flightResultTest'>
        {result?.items?.length > 0 && <p> {result?.items?.length} results found</p>}
         {result?.items?.length > 0 && result.items.map((ele, index) => (
           <FlightBox key={index} data={ele}/>
