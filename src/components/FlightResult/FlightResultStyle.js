@@ -9,6 +9,18 @@ export const FlightBocContainer = styled.div`
   p {
     font-weight: bold;
   }
+  .no-result {
+    margin:100px auto;
+    position; relative;
+    font-size:20px;
+    text-align:center;
+  }
+  @media only screen and (min-width: 1024px) {
+    /* For everything bigger than 1024px */
+    width: 1024px;
+    margin:0 auto;
+   
+  }
 `;
 export const FlightName = styled.div`
   display: flex;
@@ -48,8 +60,14 @@ export const FlightItems = styled.div`
   padding: 10px 10px 20px 10px;
   margin-bottom: 10px;
   display: flex;
-  background: rgb(237, 237, 243);
+
   flex-direction: column;
+  background:#ffffff;
+  @media only screen and (min-width: 1024px) {
+    /* For everything bigger than 1024px */
+padding:10px 15px;
+   
+  }
 `;
 export const BookNowButton = styled.div`
   display: flex;
@@ -62,6 +80,13 @@ export const BookNowButton = styled.div`
   text-align: center;
   align-items: center;
   justify-content: center;
+  @media only screen and (min-width: 1024px) {
+    /* For everything bigger than 1024px */
+    width: 200px;
+    align-self: end;
+    
+   
+  }
 `;
 export const Duration = styled.div`
 display:flex;

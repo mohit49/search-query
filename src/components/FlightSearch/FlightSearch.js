@@ -38,19 +38,20 @@ function FlightSearch() {
           <Comp.FlightTripList
             onClick={roundTypeHandler}
             type="best-price"
-            className={roundType == "best-price" ? "active" : ""}
+            className={roundType === "best-price" ? "active" : ""}
           >
             Best Price
           </Comp.FlightTripList>
           <Comp.FlightTripList
             onClick={roundTypeHandler}
             type="all"
-            className={roundType == "all" ? "active" : ""}
+            className={roundType === "all" ? "active" : ""}
           >
             All
           </Comp.FlightTripList>
         </Comp.FlightTripUl>
       </Comp.FlightTripSelection>
+      <Comp.FlightInputDate>
       <Comp.FlightInputcon>
         <Comp.LocationContainer>
           <div className="locationIcon">
@@ -121,6 +122,7 @@ function FlightSearch() {
           </Comp.Datepicker>
         </Comp.DatePickItem>
       </Comp.DatePickContainer>
+      </Comp.FlightInputDate>
       <Comp.SearchButtonCon>
         <Comp.SearchButton disabled={disabled} onClick={handleForm}>
           Submit
