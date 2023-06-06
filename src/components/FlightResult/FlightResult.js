@@ -30,8 +30,8 @@ function FlightResult() {
   return (
     <>
       <Comp.FlightBocContainer data-testid='flightResultTest'>
-       {result?.items && result?.items?.length > 0 && <p> {result?.items?.length} results found</p>}
-       {!result?.items && result?.identifier.length > 0 && depLocation && <p className="no-result"> Sorry No Result found! , Please Try to change the date starting of this month to end also location from Berlin to Berne, Bern-Belp</p>}
+       {result?.items?.length > 0 && result?.items?.length > 0 && <p> {result?.items?.length} results found</p>}
+       {!result?.items?.length > 0  && result?.identifier.length > 0 && depLocation && <p className="no-result"> Sorry No Result found! , Please Try to change the date starting of this month to end also location from Berlin to Berne, Bern-Belp</p>}
         {result?.items?.length > 0 && result.items.map((ele, index) => (
           <FlightBox key={index} data={ele}/>
         ))}
