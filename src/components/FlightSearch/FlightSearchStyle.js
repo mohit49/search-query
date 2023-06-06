@@ -5,10 +5,11 @@ export const FlightInputcon = styled.div`
   margin: 10px 0px;
   display: flex;
   flex-direction: column;
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: 768px) {
     /* For everything bigger than 1024px */
     flex-direction: row;
   }
+  
 `;
 export const FlightContainer = styled.div`
   width: 100%;
@@ -96,7 +97,7 @@ export const LocationContainer = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
-    span {
+    label {
       font-weight: bold;
       color: #6b6b6b;
     }

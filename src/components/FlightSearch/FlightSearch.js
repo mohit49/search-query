@@ -63,8 +63,8 @@ function FlightSearch() {
             />
           </div>
           <div className="locationInput">
-            <span>From</span>
-            <Dropdown setLocation={setArrLocation} />
+            <label>From</label>
+            <Dropdown labelText='Enter Departure location' setLocation={setArrLocation} />
           </div>
         </Comp.LocationContainer>
 
@@ -78,9 +78,9 @@ function FlightSearch() {
             />
           </div>
           <div className="locationInput">
-            <span>To</span>
+            <label>To</label>
 
-            <Dropdown setLocation={setDepLocation} />
+            <Dropdown setLocation={setDepLocation}  labelText='Enter Return location'/>
           </div>
         </Comp.LocationContainer>
       </Comp.FlightInputcon>
@@ -96,7 +96,7 @@ function FlightSearch() {
             <p>Departure</p>
           </span>
           <Comp.Datepicker>
-            <DatePickerElement
+            <DatePickerElement  data-testid='Departure'
               minDate={new Date()}
               date={depDate}
               setDate={setDepDate}
@@ -114,7 +114,7 @@ function FlightSearch() {
             <p>Return Date</p>
           </span>
           <Comp.Datepicker>
-            <DatePickerElement
+            <DatePickerElement  data-testid='ReturnDate'
               minDate={depDate}
               date={arrivalDate}
               setDate={setArrivalDate}

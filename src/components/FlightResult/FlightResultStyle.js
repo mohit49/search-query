@@ -21,6 +21,12 @@ export const FlightBocContainer = styled.div`
     margin:0 auto;
    
   }
+  @media only screen and (min-width: 768px) {
+    /* For everything bigger than 1024px */
+    width: 768px;
+    margin:0 auto;
+   
+  }
 `;
 export const FlightName = styled.div`
   display: flex;

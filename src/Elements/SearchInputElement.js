@@ -9,7 +9,7 @@ const debounce = (func, wait) => {
     timeout = setTimeout(() => func(...args), wait);
   };
 };
-function Dropdown({ setLocation }) {
+function Dropdown({ setLocation , labelText }) {
   const service = new Service();
   const [input, setInput] = useState();
   const [searchResult, setSearchResult] = useState();
@@ -42,10 +42,12 @@ function Dropdown({ setLocation }) {
   return (
     <>
       <input
+        aria-label={labelText}
+        aria-required="true"
         type="text"
         onChange={inputHandler}
         value={input}
-        placeholder="Enter Departure location"
+        placeholder={labelText}
       />
       {searchResult?.items?.length > 0 && showDropDown && (
         <Comp.SearchResultContainer>
