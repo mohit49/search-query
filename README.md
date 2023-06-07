@@ -23,7 +23,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 ### `To get search result`
 
-lease Try to change the date starting of this month to end also location from Berlin to Berne, Bern-Belp
+please Try to change the date starting of this month to end also location from Berlin to Berne, Bern-Belp
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
